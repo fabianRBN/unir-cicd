@@ -42,7 +42,7 @@ pipeline {
                 def nombreBuild = env.JOB_NAME
                 
                 echo "========pipeline executed successfully ========"
-                mail bcc: '', body: "Success Build: ${nombreBuild}", cc: '', from: '', replyTo: '', subject: "Build Exitoso: #${buildNumber}", to: 'fabianRBN_95@hotmail.com'
+                mail bcc: '', body: 'Success Build ', cc: '', from: '', replyTo: '', subject: "Build Exitoso: #${buildNumber} - ${nombreBuild}", to: 'fabianRBN_95@hotmail.com'
             }
         }
            
