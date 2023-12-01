@@ -47,9 +47,15 @@ pipeline {
         }
            
         failure{
-            echo "========pipeline execution failed========"
-            mail bcc: '', body: 'Faild Build unir', cc: '', from: '', replyTo: '', subject: 'Notification Jenkins', to: 'fabianRBN_95@hotmail.com'
 
+            script{
+                 // Extraer el número de build
+                def buildNumber = currentBuild.number
+                def nombreBuild = env.JOB_NAME
+                
+                echo "========pipeline execution failed========"
+                mail bcc: '', body: 'Faild Build ', cc: '', from: '', replyTo: '', subject: "Build Exitoso: #${buildNumber} - ${nombreBuild}", to: 'fabianRBN_95@hotmail.com'
+            }
         }
     }
 }
