@@ -36,9 +36,16 @@ pipeline {
             junit 'results/*_result.xml'
         }
         success{
-            echo "========pipeline executed successfully ========"
-            mail bcc: '', body: 'Success Build unir', cc: '', from: '', replyTo: '', subject: 'Notification Jenkins', to: 'fabianRBN_95@hotmail.com'
+            script{
+                 // Extraer el número de build
+                def buildNumber = currentBuild.number
+                def nombreBuild = env.JOB_NAME
+                
+                echo "========pipeline executed successfully ========"
+                mail bcc: '', body: 'Success Build: ${nombreBuild}', cc: '', from: '', replyTo: '', subject: "Build Exitoso: #${buildNumber}", to: 'fabianRBN_95@hotmail.com'
+            }
         }
+           
         failure{
             echo "========pipeline execution failed========"
             mail bcc: '', body: 'Faild Build unir', cc: '', from: '', replyTo: '', subject: 'Notification Jenkins', to: 'fabianRBN_95@hotmail.com'
