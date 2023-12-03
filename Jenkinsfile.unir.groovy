@@ -57,5 +57,15 @@ pipeline {
                 mail bcc: '', body: 'Faild Build ', cc: '', from: '', replyTo: '', subject: "Build Exitoso: #${buildNumber} - ${nombreBuild}", to: 'fabianRBN_95@hotmail.com'
             }
         }
+        unstable{
+            script{
+                 // Extraer el número de build
+                def buildNumber = currentBuild.number
+                def nombreBuild = env.JOB_NAME
+                
+                echo "========pipeline execution failed========"
+                mail bcc: '', body: 'Faild Build ', cc: '', from: '', replyTo: '', subject: "Build Exitoso: #${buildNumber} - ${nombreBuild}", to: 'fabianRBN_95@hotmail.com'
+            }
+        }
     }
 }
